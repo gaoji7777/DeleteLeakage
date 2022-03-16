@@ -1,0 +1,7 @@
+{
+    "input_size": 28,
+    "n_channels": 1,
+    "n_classes": 10,
+    "mean": [0.1307],
+    "std": [0.3081]
+}
