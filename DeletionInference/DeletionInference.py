@@ -1,12 +1,7 @@
-import sklearn.datasets
 import torch
 import torch.nn.functional as F
 from torchvision import datasets, transforms
 from types import SimpleNamespace
-from sklearn.svm import SVR, SVC
-from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier
-from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
-from sklearn import linear_model
 from models import load_model
 from train import train_model
 import json
