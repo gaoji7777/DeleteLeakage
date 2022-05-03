@@ -16,4 +16,4 @@ We use Python 3 for the codes.
 
 ## Running the code
 
-Just cd into the experiment folder and follow the instruction of each README. Note that it will create a data folder 
+Just cd into the experiment folder and follow the instruction of each README. Note that running the code will create a folder called 'data', and may take 700MB space.
