@@ -4,7 +4,7 @@ import sys
 
 def load_omniglot(dataset_name, omniglot_lang=True):
     dataset = datasets.Omniglot(
-        root="./data", download=True, transform=transforms.ToTensor()
+        root="../data", download=True, transform=transforms.ToTensor()
     )
     Xs = []
     ys = []

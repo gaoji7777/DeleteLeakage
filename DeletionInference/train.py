@@ -12,20 +12,15 @@ def train_model(model, device, train_loader, test_loader, lr=0.001, T1=30, optim
         optimizer = optim.Adam(model.parameters(), lr=lr)
     for ep in range(T1):
         optimizer.zero_grad()
-        # for xt, yt in tqdm(train_loader):
         for xt, yt in train_loader:
 
             xt, yt = xt.to(device), yt.to(device)
-            # print(xt.shape, yt.shape)
             optimizer.zero_grad()
             output = model(xt)
-            # print(output.size())
             loss = F.nll_loss(output, yt)
             loss.backward()
             optimizer.step()
             
-        # if (ep == (T1 // 3)) or (ep == (T1 // 3 * 2)):
-        #     lr = lr * 0.1
         if test_loader:
             evaluate(test_loader, model, device)
         
@@ -39,9 +34,6 @@ def train_sgd(model, device, x, y, test_loader, lr=0.001, T1=1, T2=1, batch_size
                 xt, yt = x[i * batch_size : (i + 1) * batch_size].to(device), y[i * batch_size : (i + 1) * batch_size].to(device)
                 optimizer.zero_grad()
                 output = model(xt)
-                # print(output, yt)
-                # pred = output.cpu().argmax(dim=1)
-                # correct_t += pred.eq(y[i].cpu().view_as(pred)).sum().item()
                 loss = F.nll_loss(output, yt)
                 loss.backward()
                 optimizer.step()
@@ -51,13 +43,11 @@ def evaluate(eva_loader, model, device):
     model.eval()
     correct = 0
     with torch.no_grad():
-        # for (data, label) in tqdm(eva_loader):
         for (data, label) in eva_loader:
             data, label = data.to(device), label.to(device)
             output = model(data)
             pred = output.argmax(dim=1)
             correct += pred.eq(label.view_as(pred)).sum().item()
-    print(100. * correct / len(eva_loader.dataset))
     return (100. * correct / len(eva_loader.dataset))
 
 def make_pred(model, device, x, batch_size=128):
@@ -87,7 +77,6 @@ def examine(model, device, x, y, batch_size=128):
     losses = []
     labels = []
     corrects = []
-    # print(x.size(0))
     with torch.no_grad():
         for i in range( (x.size(0) - 1) // batch_size + 1):
             xt, yt = x[i * batch_size : (i + 1) * batch_size].to(device), y[i * batch_size : (i + 1) * batch_size].to(device)

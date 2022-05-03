@@ -26,6 +26,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--m', type=int, default=100, help='number of examples in a batch')
 parser.add_argument('--NN', type=int, default=10000, help='total number of examples in the experiment')
 parser.add_argument('--data', type=int, default=1, help='which data. 0=CIFAR100, 1=CIFAR10')
+parser.add_argument('--label', type=int, default=1, help='infer with/without label. 0=without label, 1=with label')
 parser.add_argument('--model', type=str, default='cnn', help='target model type')
 parser.add_argument('--lr', type=float, default=0.001, help='learning rate')
 parser.add_argument('--T', type=int, default=20, help='number of experimental trails')
@@ -156,4 +157,4 @@ for i in range(T):
         succ2 += checkid(inds2)
 
 f = open('deletion.log', 'a')
-f.write('cifar10 %s %d %d %.2f%% %.2f%%\n' % (args.model, args.data, args.label, (succ + .0) / (T * m * m) * 100, (succ2 + .0) / (T * m * m) * 100))
+f.write('%s %d %d %d %.2f%%\n' % (args.model, args.data, args.label, args.NN, (succ + .0) / (T * m * m) * 100))

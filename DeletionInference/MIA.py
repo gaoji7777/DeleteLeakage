@@ -214,7 +214,7 @@ def train_attack_model(x, lb, y):
                 output = model_a((xt, lb))
                 pred = output.argmax(dim=1)
                 correct += pred.eq(yt.view_as(pred)).sum().item()
-        print(100. * correct / len(train_attack_loader.dataset))         
+        # print(100. * correct / len(train_attack_loader.dataset))         
     return model_a
 
 total_res1 = .0
@@ -277,4 +277,4 @@ for i in range(T):
     total_res2 += res2
 
 f = open('mia.log', 'a')
-f.write('cifar %s %d %d %d %.2f%% %.2f%%\n' % (args.model, args.data, args.m, args.NN, total_res1 * 100./T, total_res2 * 100./10000./T))
+f.write('%s %d %d %.2f%% %.2f%%\n' % (args.model, args.data, args.NN, total_res1 * 100./T, total_res2 * 100./10000./T))

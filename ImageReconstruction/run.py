@@ -6,7 +6,6 @@ import argparse
 from loadmodels import nearestneighbor
 from torchvision.utils import save_image
 import time
-from sklearn.neighbors import KNeighborsClassifier
 
 parser = argparse.ArgumentParser(description='Run experiment on data')
 parser.add_argument('--seed', type=int, default=120, help='random seed')
@@ -92,7 +91,7 @@ def del_inf(learner, kwargs, X_train, X_test, y_train, y_test, K=5):
 
     save_image(stack, "X_pred_omniglot_new_knn_%d_%d.png" % (K, int(time.time())), nrow=row_size, normalize=True)
 
-    print('Del Inf Succ: %.2f%%' % (succ * 100./fs))
-    print('Del Inf Succ2: %.2f%%' % (succ2 * 100./fs))
+    print('Rate of generating a reconstruction image: %.2f%%' % (succ * 100./fs))
+    print('Rate of generating a reconstruction image with correct label: %.2f%%' % (succ2 * 100./fs))
 
 del_inf(learner, kwargs, X_train, X_test, y_train, y_test, K=args.K)
