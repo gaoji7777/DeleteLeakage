@@ -3,7 +3,8 @@
 ## Introduction
 
 This repo contains the codes for the paper [Deletion Inference, Reconstruction, and Compliance in Machine (Un)Learning](https://arxiv.org/abs/2202.03460). We present codes for three different experiments in the paper, including 
-- Deletion inference on CIFAR-10 and CIFAR-100 (in folder [DeletionInference](https://github.com/gaoji7777/DeleteLeakage/tree/main/DeletionInference))
+- Deletion inference on CIFAR-10 and CIFAR-100 (in folder [DeletionInference](https://github.com/gaoji7777/DeleteLeakage/tree/main/DeletionInference)). 
+  - For simplicity, here we share the code of deletion inference on large dataset and deep models, but not small Scikit-Learn models and datasets (Boston/Diabetes/Breast_Cancer/Iris/Wine).
 - Deletion reconstruction for images (in folder [ImageReconstruction](https://github.com/gaoji7777/DeleteLeakage/tree/main/ImageReconstruction)), 
 - Deletion reconstruction for language models(in folder [LanguageReconstruction](https://github.com/gaoji7777/DeleteLeakage/tree/main/LanguageReconstruction)).
 
